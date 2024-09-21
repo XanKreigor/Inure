@@ -9,9 +9,9 @@ object TrialPreferences {
     private const val MAX_TRIAL_DAYS = 2147483647
 
     private const val FIRST_LAUNCH = "first_launch_"
-    private const val IS_APP_FULL_VERSION_ENABLED = "is_full_version_"
+    private const val IS_APP_FULL_VERSION_ENABLED = "true"
     private const val IS_LEGACY_MIGRATED = "is_legacy_migrated_"
-    private const val IS_UNLOCKER_VERIFICATION_REQUIRED = "is_unlocker_verification_required_"
+    private const val IS_UNLOCKER_VERIFICATION_REQUIRED = "false"
     private const val LAST_VERIFICATION_DATE = "last_verification_date_"
 
     const val HAS_LICENSE_KEY = "has_license_key"
