@@ -74,12 +74,7 @@ jobs:
                     restore-keys: |
                         ${{ runner.os }}-gradle-
 
-            -   name: Decode Keystore
-                id: decode_keystore
-                uses: timheuer/base64-to-file@v1
-                with:
-                    fileName: 'keystore/key.jks'
-                    encodedString: ${{ secrets.SIGN_KEY }}
+            
 
             -   name: Extract Version Name and Version Code
                 run: |
@@ -157,18 +152,6 @@ jobs:
                     chmod +r "${{ env.APK_PATH }}"
                     echo "File Permissions: $(stat -c '%A' "${{ env.APK_PATH }}")"
 
-            -   name: Send APK to Telegram
-                uses: appleboy/telegram-action@master
-                with:
-                    to: ${{ secrets.TG_TO }}
-                    token: ${{ secrets.TG_BOT_KEY }}
-                    document: ${{ env.APK_PATH }}
-                    message: |
-                        ${{ github.event.inputs.message }}
-                        
-                        Current Build Code: ${{ env.VERSION_CODE }}
-                        Current Commit ID: ${{ env.COMMIT_ID }}
-                        Commit Message: ${{ env.COMMIT_MESSAGE }}
 
             -   name: Archive APK
                 uses: actions/upload-artifact@v4
